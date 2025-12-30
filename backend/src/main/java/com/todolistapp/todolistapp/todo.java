@@ -1,12 +1,13 @@
 package com.todolistapp.todolistapp;
-import java.rmi.server.UID;
 import java.util.UUID;
+import java.time.LocalDate;
 
 public class todo {
     private String id;
     private String task;
     private String difficulty;
     private String description;
+    private LocalDate date_created;
 
     public todo(String task, String difficulty, String description)
     {
@@ -14,6 +15,7 @@ public class todo {
         this.task = task;
         this.difficulty = difficulty;
         this.description = description;
+        this.date_created = LocalDate.now();
     }
 
     public String getId()
@@ -21,8 +23,14 @@ public class todo {
         return this.id;
     }
 
+    public String getDateCreated()
+    {
+        return this.date_created.toString();
+    }
+
     public todo(){
         this.id = UUID.randomUUID().toString();
+        this.date_created = LocalDate.now();
     }
 
     public String getTask()
