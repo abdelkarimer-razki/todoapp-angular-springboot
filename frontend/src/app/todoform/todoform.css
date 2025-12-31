@@ -1,0 +1,173 @@
+:root {
+    --primary: #6366f1;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --easy: #10b981;
+    --medium: #f59e0b;
+    --hard: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Input Card Style */
+.input-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.input-group input, 
+.input-group textarea, 
+.input-group select {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.input-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+.input-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.input-footer select {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+#addBtn {
+    background: var(--primary);
+    color: black;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#addBtn:hover {
+    opacity: 0.9;
+}
+
+/* Task Item Styles */
+.task-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border-left: 5px solid #ddd;
+    transition: transform 0.2s;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+}
+
+.task-content h3 {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.task-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.task-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.complete-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.2s;
+}
+
+.complete-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Difficulty Colors */
+.difficulty-easy { border-left-color: var(--easy); }
+.difficulty-easy .badge { background: #dcfce7; color: var(--easy); }
+
+.difficulty-medium { border-left-color: var(--medium); }
+.difficulty-medium .badge { background: #fef3c7; color: var(--medium); }
+
+.difficulty-hard { border-left-color: var(--hard); }
+.difficulty-hard .badge { background: #fee2e2; color: var(--hard); }

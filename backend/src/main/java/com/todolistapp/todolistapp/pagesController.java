@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class pagesController {
-    
-    @GetMapping("/")
+
+	@GetMapping("/")
 	public String redirect()
 	{
 		return "redirect:/api";

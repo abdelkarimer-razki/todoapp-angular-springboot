@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "todolistapp": {
+    "todoapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "todolistapp:build:production"
+              "buildTarget": "todoapp:build:production"
             },
             "development": {
-              "buildTarget": "todolistapp:build:development"
+              "buildTarget": "todoapp:build:development"
             }
           },
           "defaultConfiguration": "development"
