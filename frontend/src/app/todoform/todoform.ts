@@ -23,6 +23,7 @@ export class Todoform {
 
 	allTasks = signal<task[]>([]);
 	isLoading = signal<Boolean>(true);
+	edit = signal<Boolean>(false);
 
 	constructor(private tdata:Todolistdata){}
 
@@ -48,18 +49,42 @@ export class Todoform {
 				this.isLoading.set(false)
 				this.allTasks.set(data as task[])
 				this.cleanTask()
-				console.log(this.allTasks, this.isLoading)
 			}
 		)
 	}
 
+
 	addTask()
 	{
-		this.isLoading.set(true)
-		this.tdata.addTask(this.task).subscribe(
-			(data)=> {
+		if (this.task.task == "" || this.task.description == "" || this.task.difficulty == "")
+			alert("You should fill all the inputs")
+		else
+		{
+			this.isLoading.set(true)
+			this.tdata.addTask(this.task).subscribe(
+				(data)=> {
+					this.cleanTask()
+					this.getData()
+				}
+			)
+		}
+	}
+
+	deleteTask(id:String)
+	{
+		this.tdata.deleteTask(id).subscribe(
+			(data)=>{
 				this.cleanTask()
-				console.log("data sent successfully")
+				this.getData()
+			}
+		)
+	}
+
+	updateTask(id:String, task:task)
+	{
+		this.tdata.updateTask(id, task).subscribe(
+			(data)=>{
+				this.edit.set(false)
 				this.getData()
 			}
 		)

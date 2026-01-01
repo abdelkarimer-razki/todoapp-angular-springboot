@@ -25,17 +25,42 @@
 		{
 			<div class="task-item difficulty-hard">
 				<div class="task-content">
-					<h3>{{todo.task}}</h3>
-					<p>{{todo.description}}</p>
+					@if (!edit())
+					{
+						<h3>{{todo.task}}</h3>
+						<p>{{todo.description}}</p>
+					}
+					@else if(edit())
+					{
+						<input type="text" id="taskTitle" placeholder="What needs to be done?" [(ngModel)]="todo.task">
+						<br>
+						<textarea id="taskDesc" placeholder="Add a description..." [(ngModel)]="todo.description"></textarea>
+					}
 				</div>
 				<div class="task-status">
-					<span class="badge">{{todo.difficulty}}</span>
-					<button class="complete-btn">✓</button>
+					
+					@if (!edit())
+					{
+						<span class="badge">{{todo.difficulty}}</span>
+						<button type="button" class="btn btn-primary" (click)="edit.set(!edit())">Edit</button>
+						<button type="button" class="btn btn-danger" (click)="deleteTask(todo.id)">Delete</button>
+					}@else
+					{
+						<select id="taskDifficulty" [(ngModel)]="todo.difficulty">
+							<option value="easy">Level: Easy</option>
+							<option value="medium">Level: Medium</option>
+							<option value="hard">Level: Hard</option>
+						</select>
+						<button type="button" class="btn btn-success" (click)="updateTask(todo.id, todo)">Confirm</button>
+						<button type="button" class="btn btn-danger" (click)="edit.set(!edit())">Cancel</button>
+					}
 				</div>
 			</div>
 		}
-		<!-- @empty {
-			There's no task added yet!
-		} -->
+		@empty {
+			<div class="nodata">
+				There's no task added yet!
+			</div>
+		}
 	}
 </section>

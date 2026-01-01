@@ -17,4 +17,14 @@ export class Todolistdata {
 	{
 		return this.http.post(this.apiUrl + 'addTask', task)
 	}
+
+	deleteTask(id:String)
+	{
+		return this.http.delete(this.apiUrl + 'deleteTask/' + id)
+	}
+
+	updateTask(id:String, task:task)
+	{
+		return this.http.put(this.apiUrl + "updateTask/" + id, task)
+	}
 }
