@@ -171,3 +171,11 @@ header p {
 
 .difficulty-hard { border-left-color: var(--hard); }
 .difficulty-hard .badge { background: #fee2e2; color: var(--hard); }
+
+.loading
+{
+    width: 50px;
+    margin:  0 auto;
+    fill: #000000c7;
+    display: block;
+}

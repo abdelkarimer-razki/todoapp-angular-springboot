@@ -1,40 +1,41 @@
 
 <section class="input-card">
 	<div class="input-group">
-		<input type="text" id="taskTitle" placeholder="What needs to be done?">
-		<textarea id="taskDesc" placeholder="Add a description..."></textarea>
+		<input type="text" id="taskTitle" placeholder="What needs to be done?" [(ngModel)]="task.task">
+		<textarea id="taskDesc" placeholder="Add a description..." [(ngModel)]="task.description"></textarea>
 		
 		<div class="input-footer">
-			<select id="taskDifficulty">
+			<select id="taskDifficulty" [(ngModel)]="task.difficulty">
 				<option value="easy">Level: Easy</option>
 				<option value="medium">Level: Medium</option>
 				<option value="hard">Level: Hard</option>
 			</select>
-			<button id="addBtn">Add Task</button>
+			<button id="addBtn" (click)="addTask()">Add Task</button>
 		</div>
 	</div>
 </section>
 
-<section class="task-list">
-	<div class="task-item difficulty-hard">
-		<div class="task-content">
-			<h3>Fix Production Bug</h3>
-			<p>The login authentication is failing on mobile devices during peak hours.</p>
-		</div>
-		<div class="task-status">
-			<span class="badge">Hard</span>
-			<button class="complete-btn">✓</button>
-		</div>
-	</div>
-
-	<div class="task-item difficulty-medium">
-		<div class="task-content">
-			<h3>Update Portfolio</h3>
-			<p>Add the new JOBintech projects to the main landing page.</p>
-		</div>
-		<div class="task-status">
-			<span class="badge">Medium</span>
-			<button class="complete-btn">✓</button>
-		</div>
-	</div>
+<section  class="task-list">
+	@if (isLoading())
+	{
+		<svg class="loading" fill="hsl(228, 97%, 42%)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/></path></svg>
+	}@else if(!isLoading())
+	{
+		@for(todo of allTasks(); track todo.id)
+		{
+			<div class="task-item difficulty-hard">
+				<div class="task-content">
+					<h3>{{todo.task}}</h3>
+					<p>{{todo.description}}</p>
+				</div>
+				<div class="task-status">
+					<span class="badge">{{todo.difficulty}}</span>
+					<button class="complete-btn">✓</button>
+				</div>
+			</div>
+		}
+		<!-- @empty {
+			There's no task added yet!
+		} -->
+	}
 </section>
