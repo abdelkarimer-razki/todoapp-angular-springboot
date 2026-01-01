@@ -24,6 +24,8 @@ export class Todoform {
 	allTasks = signal<task[]>([]);
 	isLoading = signal<Boolean>(true);
 	edit = signal<Boolean>(false);
+	ascDif:boolean = true;
+	ascDate:boolean = true;
 
 	constructor(private tdata:Todolistdata){}
 
@@ -46,6 +48,7 @@ export class Todoform {
 	{
 		this.tdata.getTask().subscribe(
 			(data) =>{
+
 				this.isLoading.set(false)
 				this.allTasks.set(data as task[])
 				this.cleanTask()
@@ -53,6 +56,19 @@ export class Todoform {
 		)
 	}
 
+	getTaskifficulty(sort:boolean)
+	{
+		this.tdata.getTaskifficulty(sort).subscribe(
+			(data)=> this.allTasks.set(data as task[])
+		)
+	}
+
+	getTaskdate(sort:boolean)
+	{
+		this.tdata.getTaskdate(sort).subscribe(
+			(data)=> this.allTasks.set(data as task[])
+		)
+	}
 
 	addTask()
 	{

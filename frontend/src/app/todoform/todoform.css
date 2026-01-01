@@ -182,8 +182,13 @@ header p {
 
 .btn
 {
-    width: 100px;
+    width: fit-content;
     padding: 2px 10px;
+}
+
+.sort
+{
+    margin: 10px;
 }
 
 .nodata

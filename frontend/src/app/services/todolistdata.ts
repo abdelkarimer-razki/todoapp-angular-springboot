@@ -27,4 +27,14 @@ export class Todolistdata {
 	{
 		return this.http.put(this.apiUrl + "updateTask/" + id, task)
 	}
+
+	getTaskifficulty(sort:boolean)
+	{
+		return this.http.get(this.apiUrl + "getTask/difficulty/"+ sort)
+	}
+
+		getTaskdate(sort:boolean)
+	{
+		return this.http.get(this.apiUrl + "getTask/date/"+ sort)
+	}
 }
